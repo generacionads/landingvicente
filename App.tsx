@@ -1,11 +1,3 @@
-import React from 'react';
-import Layout from './app/layout';
-import Page from './app/page';
-
-export default function App() {
-  return (
-    <Layout>
-      <Page />
-    </Layout>
-  );
-}
+// This file is not used in Next.js App Router deployment.
+// Keeping it empty to prevent conflicts.
+export default function App() { return null; }
