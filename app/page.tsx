@@ -4,14 +4,13 @@ import ValuePropsSection from '../components/ValuePropsSection';
 import RoomsSection from '../components/RoomsSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 
-// This is the main page component that would be served at '/'
 export default function Page() {
   return (
-    <>
+    <React.Fragment>
       <HeroSection />
       <ValuePropsSection />
       <RoomsSection />
       <TestimonialsSection />
-    </>
+    </React.Fragment>
   );
 }
