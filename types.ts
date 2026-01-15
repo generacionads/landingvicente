@@ -9,6 +9,7 @@ export interface Room {
   difficulty: number; // 1-5
   players: string;
   time: string;
+  bookingUrl: string;
 }
 
 export interface ValueProp {

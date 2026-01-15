@@ -64,10 +64,15 @@ const RoomsSection: React.FC = () => {
                   </div>
                 </div>
 
-                <button className="w-full bg-transparent border border-amber-600/30 text-amber-500 hover:bg-amber-600 hover:text-slate-950 font-bold py-3 px-4 rounded transition-all duration-300 flex justify-center items-center gap-2 group-hover:shadow-[0_0_15px_rgba(245,158,11,0.2)]">
+                <a 
+                  href={room.bookingUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-full bg-transparent border border-amber-600/30 text-amber-500 hover:bg-amber-600 hover:text-slate-950 font-bold py-3 px-4 rounded transition-all duration-300 flex justify-center items-center gap-2 group-hover:shadow-[0_0_15px_rgba(245,158,11,0.2)]"
+                >
                   VER DISPONIBILIDAD
                   <ChevronRight size={18} />
-                </button>
+                </a>
               </div>
             </div>
           ))}
