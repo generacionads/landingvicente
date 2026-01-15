@@ -7,7 +7,7 @@ export const ROOMS_DATA: Room[] = [
     title: "Emergencia Submarina",
     tag: "Dificultad Alta",
     tagColor: "bg-red-900/50 text-red-200 border-red-700",
-    imageUrl: "/emergencia-submarina.WEBP",
+    imageUrl: "/emergencia-submarina.webP",
     difficulty: 5,
     players: "2-6",
     time: "60 min",
