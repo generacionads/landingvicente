@@ -27,9 +27,9 @@ const Navbar: React.FC = () => {
         {/* Logo */}
         <div className="flex items-center gap-2">
             <span className="text-2xl md:text-3xl font-serif font-bold text-slate-100 tracking-widest">
-              ESCAPOLOGY
+              EscapaDelAburrimiento
             </span>
-            <span className="text-amber-500 text-xs font-sans tracking-widest mt-2 hidden md:block">MADRID</span>
+            <span className="text-amber-500 text-xs font-sans tracking-widest mt-2 hidden md:block">Álcala de Henares</span>
         </div>
 
         {/* Desktop Menu */}
