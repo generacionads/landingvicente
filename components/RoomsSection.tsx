@@ -19,15 +19,15 @@ const RoomsSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {ROOMS_DATA.map((room) => (
             <div key={room.id} className="group bg-slate-900 rounded-md overflow-hidden border border-slate-800 hover:border-amber-600/50 transition-all duration-300 hover:shadow-2xl hover:shadow-black/50 flex flex-col h-full">
-              {/* Image Container */}
-              <div className="relative h-64 overflow-hidden">
+              {/* Image Container - Must be relative for fill to work */}
+              <div className="relative h-64 overflow-hidden w-full bg-slate-950">
                 <div className="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-all duration-500 z-10"></div>
                 <Image 
                   src={room.imageUrl} 
                   alt={room.title}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className={`absolute top-4 right-4 z-20 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider border backdrop-blur-md ${room.tagColor}`}>
                   {room.tag}

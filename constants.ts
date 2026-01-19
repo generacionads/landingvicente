@@ -7,7 +7,8 @@ export const ROOMS_DATA: Room[] = [
     title: "Emergencia Submarina",
     tag: "Dificultad Alta",
     tagColor: "bg-red-900/50 text-red-200 border-red-700",
-    imageUrl: "/emergencia-submarina.webP", // Make sure this file is in 'public' folder
+    // Ruta local: Asegúrate de que el archivo esté en public/emergencia-submarina.webP
+    imageUrl: "/emergencia-submarina.webP", 
     difficulty: 5,
     players: "2-6",
     time: "60 min",
@@ -18,7 +19,8 @@ export const ROOMS_DATA: Room[] = [
     title: "La Mansión Del Crimen",
     tag: "Familiar",
     tagColor: "bg-purple-900/50 text-purple-200 border-purple-700",
-    imageUrl: "/images/la-mansion-del-crimen.webp", // Ensure 'images' folder is inside 'public'
+    // Ruta local: Asegúrate de que el archivo esté en public/images/la-mansion-del-crimen.webp
+    imageUrl: "/images/la-mansion-del-crimen.webp", 
     difficulty: 3,
     players: "3-8",
     time: "60 min",
@@ -29,7 +31,8 @@ export const ROOMS_DATA: Room[] = [
     title: "Th3 C0d3",
     tag: "Ciencia/Laboratorio",
     tagColor: "bg-emerald-900/50 text-emerald-200 border-emerald-700",
-    imageUrl: "/emergencia-submarina.webP", // Re-using existing image, update if needed
+    // Ruta local: Reutilizando la anterior, ajusta si tienes otra imagen
+    imageUrl: "/emergencia-submarina.webP", 
     difficulty: 4,
     players: "2-6",
     time: "60 min",
@@ -38,9 +41,10 @@ export const ROOMS_DATA: Room[] = [
   {
     id: 'arizona',
     title: "Tiroteo en Arizona",
-    tag: "Ciencia/Laboratorio",
-    tagColor: "bg-emerald-900/50 text-emerald-200 border-emerald-700",
-    imageUrl: "/12.png", // ADDED SLASH. Ensure 12.png is in the 'public' folder.
+    tag: "Aventura",
+    tagColor: "bg-amber-900/50 text-amber-200 border-amber-700",
+    // Ruta local: Asegúrate de que el archivo esté en public/12.png
+    imageUrl: "/12.png",
     difficulty: 4,
     players: "2-6",
     time: "60 min",
