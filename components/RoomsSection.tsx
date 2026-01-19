@@ -25,7 +25,9 @@ const RoomsSection: React.FC = () => {
                 <Image 
                   src={room.imageUrl} 
                   alt={room.title}
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover transform group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className={`absolute top-4 right-4 z-20 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider border backdrop-blur-md ${room.tagColor}`}>
                   {room.tag}
