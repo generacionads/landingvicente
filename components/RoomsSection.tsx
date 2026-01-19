@@ -1,6 +1,7 @@
 import React from 'react';
 import { Users, Clock, ChevronRight } from 'lucide-react';
 import { ROOMS_DATA } from '../constants';
+import Image from 'next/image';
 
 const RoomsSection: React.FC = () => {
   return (
@@ -21,7 +22,7 @@ const RoomsSection: React.FC = () => {
               {/* Image Container */}
               <div className="relative h-64 overflow-hidden">
                 <div className="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-all duration-500 z-10"></div>
-                <img 
+                <Image 
                   src={room.imageUrl} 
                   alt={room.title}
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
