@@ -52,9 +52,14 @@ const GiftCardSection: React.FC = () => {
               </li>
             </ul>
 
-            <button className="w-full sm:w-auto bg-transparent border border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-slate-950 px-8 py-3 rounded font-bold tracking-widest uppercase transition-all duration-300 mt-4">
+            <a 
+              href="https://escapology-madrid.bookgy.com/calendar?cofDu7%252BAkYeGbm12bXuAopi4dYJ8h3lnjnx7jLa5tINvaFpoZ4FvapXOxrCDfHiIZnmOem6KsL6%252BkHZ8hmppg2l2iL3GtG5j"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-block text-center bg-transparent border border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-slate-950 px-8 py-3 rounded font-bold tracking-widest uppercase transition-all duration-300 mt-4"
+            >
               Comprar Tarjeta Regalo
-            </button>
+            </a>
           </div>
 
           {/* Visual Card Representation */}
