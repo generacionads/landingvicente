@@ -18,7 +18,7 @@ export const ROOMS_DATA: Room[] = [
     title: "La Mansión Del Crimen",
     tag: "Familiar",
     tagColor: "bg-purple-900/50 text-purple-200 border-purple-700",
-    imageUrl: "https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?q=80&w=1000&auto=format&fit=crop",
+    imageUrl: "/images/la-mansion-del-crimen.webp",
     difficulty: 3,
     players: "3-8",
     time: "60 min",
