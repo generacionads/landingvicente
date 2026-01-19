@@ -3,6 +3,7 @@ import HeroSection from '../components/HeroSection';
 import ValuePropsSection from '../components/ValuePropsSection';
 import RoomsSection from '../components/RoomsSection';
 import SpecialGroupsSection from '../components/SpecialGroupsSection';
+import GiftCardSection from '../components/GiftCardSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 
 export default function Page() {
@@ -12,6 +13,7 @@ export default function Page() {
       <ValuePropsSection />
       <RoomsSection />
       <SpecialGroupsSection />
+      <GiftCardSection />
       <TestimonialsSection />
     </React.Fragment>
   );
