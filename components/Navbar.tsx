@@ -38,9 +38,9 @@ const Navbar: React.FC = () => {
           <a href="#salas" className="text-sm font-medium text-slate-300 hover:text-amber-500 transition-colors tracking-wide uppercase">Nuestras Salas</a>
           <a href="#ubicacion" className="text-sm font-medium text-slate-300 hover:text-amber-500 transition-colors tracking-wide uppercase">Ubicación</a>
           
-          <button className="bg-amber-600 hover:bg-amber-500 text-slate-950 px-6 py-2.5 rounded-sm font-bold tracking-wider text-sm transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(245,158,11,0.4)]">
+          <a href="#salas" className="bg-amber-600 hover:bg-amber-500 text-slate-950 px-6 py-2.5 rounded-sm font-bold tracking-wider text-sm transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(245,158,11,0.4)]">
             RESERVAR AHORA
-          </button>
+          </a>
         </div>
 
         {/* Mobile Toggle */}
@@ -58,9 +58,9 @@ const Navbar: React.FC = () => {
           <a href="#experiencia" className="text-slate-300 hover:text-amber-500 py-2 uppercase tracking-wide" onClick={() => setIsMobileMenuOpen(false)}>La Experiencia</a>
           <a href="#salas" className="text-slate-300 hover:text-amber-500 py-2 uppercase tracking-wide" onClick={() => setIsMobileMenuOpen(false)}>Nuestras Salas</a>
           <a href="#ubicacion" className="text-slate-300 hover:text-amber-500 py-2 uppercase tracking-wide" onClick={() => setIsMobileMenuOpen(false)}>Ubicación</a>
-          <button className="w-full bg-amber-600 text-slate-950 px-6 py-3 font-bold tracking-wider mt-2">
+          <a href="#salas" className="w-full bg-amber-600 text-slate-950 px-6 py-3 font-bold tracking-wider mt-2 text-center block" onClick={() => setIsMobileMenuOpen(false)}>
             RESERVAR AHORA
-          </button>
+          </a>
         </div>
       </div>
     </nav>
