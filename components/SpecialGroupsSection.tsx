@@ -6,7 +6,7 @@ import { PartyPopper, Users, Building2, ArrowRight, X, Send, CheckCircle2 } from
 const SpecialGroupsSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedGroupTitle, setSelectedGroupTitle] = useState('');
-  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   const groups = [
     {
@@ -49,14 +49,38 @@ const SpecialGroupsSection: React.FC = () => {
     document.body.style.overflow = 'unset';
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormStatus('submitting');
     
-    // Simulate API call
-    setTimeout(() => {
-      setFormStatus('success');
-    }, 1500);
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/escapadelaburrimiento@gmail.com", {
+        method: "POST",
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            ...data,
+            group_interest: selectedGroupTitle,
+            _subject: `🎉 Solicitud Grupo Especial: ${selectedGroupTitle} - Escapology`,
+            _template: "table",
+            _captcha: "false"
+        })
+      });
+
+      if (response.ok) {
+        setFormStatus('success');
+      } else {
+        setFormStatus('error');
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setFormStatus('error');
+    }
   };
 
   return (
@@ -174,6 +198,7 @@ const SpecialGroupsSection: React.FC = () => {
                       <input 
                         type="text" 
                         id="name"
+                        name="name"
                         required
                         className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none transition-all placeholder:text-slate-700"
                         placeholder="Tu nombre"
@@ -184,6 +209,7 @@ const SpecialGroupsSection: React.FC = () => {
                       <input 
                         type="tel" 
                         id="phone"
+                        name="phone"
                         required
                         className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none transition-all placeholder:text-slate-700"
                         placeholder="+34 600..."
@@ -196,6 +222,7 @@ const SpecialGroupsSection: React.FC = () => {
                     <input 
                       type="email" 
                       id="email"
+                      name="email"
                       required
                       className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none transition-all placeholder:text-slate-700"
                       placeholder="ejemplo@correo.com"
@@ -208,6 +235,7 @@ const SpecialGroupsSection: React.FC = () => {
                       <input 
                         type="number" 
                         id="participants"
+                        name="participants"
                         min="2"
                         className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none transition-all placeholder:text-slate-700"
                         placeholder="Ej: 8"
@@ -218,6 +246,7 @@ const SpecialGroupsSection: React.FC = () => {
                       <input 
                         type="date" 
                         id="date"
+                        name="date"
                         className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none transition-all text-slate-400"
                       />
                     </div>
@@ -227,11 +256,18 @@ const SpecialGroupsSection: React.FC = () => {
                     <label htmlFor="message" className="text-xs font-bold text-slate-400 uppercase tracking-wider">Mensaje / Dudas</label>
                     <textarea 
                       id="message"
+                      name="message"
                       rows={3}
                       className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none transition-all placeholder:text-slate-700 resize-none"
                       placeholder="Cuéntanos más sobre tu evento..."
                     ></textarea>
                   </div>
+
+                  {formStatus === 'error' && (
+                    <div className="text-red-400 text-xs text-center">
+                        Hubo un error al enviar la solicitud. Por favor inténtalo de nuevo o contáctanos directamente.
+                    </div>
+                  )}
 
                   <button 
                     type="submit"

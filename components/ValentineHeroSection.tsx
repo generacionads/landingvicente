@@ -6,7 +6,7 @@ import { ROOMS_DATA } from '../constants';
 
 const ValentineHeroSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -19,14 +19,37 @@ const ValentineHeroSection: React.FC = () => {
     document.body.style.overflow = 'unset';
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormStatus('submitting');
     
-    // Simulate API call
-    setTimeout(() => {
-      setFormStatus('success');
-    }, 1500);
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/escapadelaburrimiento@gmail.com", {
+        method: "POST",
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            ...data,
+            _subject: "💘 Nueva Reserva San Valentín - Escapology",
+            _template: "table",
+            _captcha: "false"
+        })
+      });
+
+      if (response.ok) {
+        setFormStatus('success');
+      } else {
+        setFormStatus('error');
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setFormStatus('error');
+    }
   };
 
   return (
@@ -145,7 +168,7 @@ const ValentineHeroSection: React.FC = () => {
                   </div>
                   <h4 className="text-xl font-bold text-slate-100 mb-2">¡Reserva Solicitada!</h4>
                   <p className="text-slate-400 mb-6 max-w-xs">
-                    Hemos recibido tu solicitud. Te confirmaremos la disponibilidad en breves instantes vía email.
+                    Hemos recibido tu solicitud. Te contactaremos en breve para confirmar la disponibilidad.
                   </p>
                   <button 
                     onClick={handleCloseModal}
@@ -162,6 +185,7 @@ const ValentineHeroSection: React.FC = () => {
                       <input 
                         type="text" 
                         id="name"
+                        name="name"
                         required
                         className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-rose-500 focus:ring-1 focus:ring-rose-500 outline-none transition-all placeholder:text-slate-700"
                         placeholder="Tu nombre"
@@ -172,6 +196,7 @@ const ValentineHeroSection: React.FC = () => {
                       <input 
                         type="tel" 
                         id="phone"
+                        name="phone"
                         required
                         className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-rose-500 focus:ring-1 focus:ring-rose-500 outline-none transition-all placeholder:text-slate-700"
                         placeholder="+34 600..."
@@ -184,6 +209,7 @@ const ValentineHeroSection: React.FC = () => {
                     <input 
                       type="email" 
                       id="email"
+                      name="email"
                       required
                       className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-rose-500 focus:ring-1 focus:ring-rose-500 outline-none transition-all placeholder:text-slate-700"
                       placeholder="ejemplo@correo.com"
@@ -196,10 +222,12 @@ const ValentineHeroSection: React.FC = () => {
                     <div className="relative">
                         <select 
                         id="room"
+                        name="room"
                         required
                         className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-rose-500 focus:ring-1 focus:ring-rose-500 outline-none transition-all appearance-none cursor-pointer"
+                        defaultValue=""
                         >
-                        <option value="" disabled selected>Selecciona una aventura...</option>
+                        <option value="" disabled>Selecciona una aventura...</option>
                         {ROOMS_DATA.map((room) => (
                             <option key={room.id} value={room.id}>{room.title}</option>
                         ))}
@@ -216,6 +244,7 @@ const ValentineHeroSection: React.FC = () => {
                       <input 
                         type="number" 
                         id="participants"
+                        name="participants"
                         min="2"
                         max="8"
                         className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-rose-500 focus:ring-1 focus:ring-rose-500 outline-none transition-all placeholder:text-slate-700"
@@ -227,11 +256,18 @@ const ValentineHeroSection: React.FC = () => {
                       <input 
                         type="date" 
                         id="date"
+                        name="date"
                         required
                         className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-rose-500 focus:ring-1 focus:ring-rose-500 outline-none transition-all text-slate-400"
                       />
                     </div>
                   </div>
+
+                  {formStatus === 'error' && (
+                    <div className="text-red-400 text-xs text-center">
+                        Hubo un error al enviar el formulario. Por favor inténtalo de nuevo o contáctanos directamente.
+                    </div>
+                  )}
 
                   <button 
                     type="submit"
