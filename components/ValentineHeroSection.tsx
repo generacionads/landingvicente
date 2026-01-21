@@ -50,6 +50,9 @@ const ValentineHeroSection: React.FC = () => {
         <div className="absolute bottom-1/3 right-1/4 w-3 h-3 bg-red-600 rounded-full blur-[3px] opacity-30 animate-pulse delay-700"></div>
       </div>
 
+      {/* Smooth Transition Gradient (Bottom) */}
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent z-10 pointer-events-none"></div>
+
       <div className="container mx-auto px-6 relative z-10 text-center flex flex-col items-center">
         
         {/* Special Badge */}

@@ -13,6 +13,9 @@ const HeroSection: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/40 to-slate-950"></div>
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')] opacity-30"></div>
       </div>
+      
+      {/* Smooth Transition Gradient (Top) */}
+      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-slate-950 via-slate-950/80 to-transparent z-10 pointer-events-none"></div>
 
       <div className="container mx-auto px-6 relative z-10 text-center">
         <div className="inline-block mb-4 px-3 py-1 border border-amber-500/30 rounded-full bg-slate-950/50 backdrop-blur-sm">
