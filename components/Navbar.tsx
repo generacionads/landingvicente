@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
             <span className="text-2xl md:text-3xl font-serif font-bold text-slate-100 tracking-widest">
               Escapology
             </span>
-            <span className="text-amber-500 text-xs font-sans tracking-widest mt-2 hidden md:block">Álcala de Henares</span>
+            <span className="text-amber-500 text-xs font-sans tracking-widest mt-2 hidden md:block">Alcalá de Henares</span>
         </div>
 
         {/* Desktop Menu */}

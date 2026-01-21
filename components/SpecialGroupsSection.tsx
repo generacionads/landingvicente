@@ -1,7 +1,13 @@
-import React from 'react';
-import { PartyPopper, Users, Building2, ArrowRight } from 'lucide-react';
+'use client';
+
+import React, { useState, FormEvent } from 'react';
+import { PartyPopper, Users, Building2, ArrowRight, X, Send, CheckCircle2 } from 'lucide-react';
 
 const SpecialGroupsSection: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedGroupTitle, setSelectedGroupTitle] = useState('');
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+
   const groups = [
     {
       id: 'kids',
@@ -28,6 +34,30 @@ const SpecialGroupsSection: React.FC = () => {
       features: ["Team Building", "Competición por equipos", "Catering disponible"]
     }
   ];
+
+  const handleOpenModal = (title: string) => {
+    setSelectedGroupTitle(title);
+    setFormStatus('idle');
+    setIsModalOpen(true);
+    // Prevent background scrolling
+    document.body.style.overflow = 'hidden';
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    // Restore background scrolling
+    document.body.style.overflow = 'unset';
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    setFormStatus('submitting');
+    
+    // Simulate API call
+    setTimeout(() => {
+      setFormStatus('success');
+    }, 1500);
+  };
 
   return (
     <section className="py-24 bg-slate-900 border-t border-slate-800 relative overflow-hidden">
@@ -80,7 +110,10 @@ const SpecialGroupsSection: React.FC = () => {
                 ))}
               </ul>
 
-              <button className="w-full py-3 border border-slate-700 hover:border-amber-600 text-slate-300 hover:text-amber-500 text-xs font-bold tracking-widest uppercase transition-all duration-300 flex items-center justify-center gap-2 group-hover:bg-slate-900">
+              <button 
+                onClick={() => handleOpenModal(group.title)}
+                className="w-full py-3 border border-slate-700 hover:border-amber-600 text-slate-300 hover:text-amber-500 text-xs font-bold tracking-widest uppercase transition-all duration-300 flex items-center justify-center gap-2 group-hover:bg-slate-900"
+              >
                 {group.discount ? 'Solicitar Oferta' : 'Contactar'}
                 <ArrowRight size={14} />
               </button>
@@ -88,6 +121,142 @@ const SpecialGroupsSection: React.FC = () => {
           ))}
         </div>
       </div>
+
+      {/* MODAL */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center px-4">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-slate-950/90 backdrop-blur-sm transition-opacity"
+            onClick={handleCloseModal}
+          ></div>
+
+          {/* Modal Content */}
+          <div className="relative w-full max-w-lg bg-slate-900 border border-slate-700 rounded-lg shadow-2xl overflow-hidden animate-fade-in-up">
+            
+            {/* Header */}
+            <div className="flex justify-between items-center p-6 border-b border-slate-800 bg-slate-950/50">
+              <div>
+                <span className="text-amber-600 text-xs font-bold uppercase tracking-wider block mb-1">Interés en</span>
+                <h3 className="font-serif text-xl font-bold text-slate-100">{selectedGroupTitle}</h3>
+              </div>
+              <button 
+                onClick={handleCloseModal}
+                className="text-slate-400 hover:text-white transition-colors p-1"
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            {/* Form Body */}
+            <div className="p-6 md:p-8">
+              {formStatus === 'success' ? (
+                <div className="flex flex-col items-center justify-center py-10 text-center animate-fade-in">
+                  <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mb-4 text-green-500">
+                    <CheckCircle2 size={32} />
+                  </div>
+                  <h4 className="text-xl font-bold text-slate-100 mb-2">¡Solicitud Enviada!</h4>
+                  <p className="text-slate-400 mb-6 max-w-xs">
+                    Un agente de Escapology contactará contigo en menos de 24h para organizar tu experiencia.
+                  </p>
+                  <button 
+                    onClick={handleCloseModal}
+                    className="bg-slate-800 hover:bg-slate-700 text-white px-6 py-2 rounded text-sm font-bold uppercase tracking-wider transition-colors"
+                  >
+                    Cerrar
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <label htmlFor="name" className="text-xs font-bold text-slate-400 uppercase tracking-wider">Nombre</label>
+                      <input 
+                        type="text" 
+                        id="name"
+                        required
+                        className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none transition-all placeholder:text-slate-700"
+                        placeholder="Tu nombre"
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <label htmlFor="phone" className="text-xs font-bold text-slate-400 uppercase tracking-wider">Teléfono</label>
+                      <input 
+                        type="tel" 
+                        id="phone"
+                        required
+                        className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none transition-all placeholder:text-slate-700"
+                        placeholder="+34 600..."
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1">
+                    <label htmlFor="email" className="text-xs font-bold text-slate-400 uppercase tracking-wider">Email</label>
+                    <input 
+                      type="email" 
+                      id="email"
+                      required
+                      className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none transition-all placeholder:text-slate-700"
+                      placeholder="ejemplo@correo.com"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                     <div className="space-y-1">
+                      <label htmlFor="participants" className="text-xs font-bold text-slate-400 uppercase tracking-wider">Nº Personas (Aprox)</label>
+                      <input 
+                        type="number" 
+                        id="participants"
+                        min="2"
+                        className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none transition-all placeholder:text-slate-700"
+                        placeholder="Ej: 8"
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <label htmlFor="date" className="text-xs font-bold text-slate-400 uppercase tracking-wider">Fecha deseada</label>
+                      <input 
+                        type="date" 
+                        id="date"
+                        className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none transition-all text-slate-400"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1">
+                    <label htmlFor="message" className="text-xs font-bold text-slate-400 uppercase tracking-wider">Mensaje / Dudas</label>
+                    <textarea 
+                      id="message"
+                      rows={3}
+                      className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none transition-all placeholder:text-slate-700 resize-none"
+                      placeholder="Cuéntanos más sobre tu evento..."
+                    ></textarea>
+                  </div>
+
+                  <button 
+                    type="submit"
+                    disabled={formStatus === 'submitting'}
+                    className="w-full bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold py-3.5 rounded mt-4 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {formStatus === 'submitting' ? (
+                      <>Enviando...</>
+                    ) : (
+                      <>
+                        ENVIAR SOLICITUD
+                        <Send size={18} />
+                      </>
+                    )}
+                  </button>
+                  
+                  <p className="text-[10px] text-slate-500 text-center mt-2">
+                    Al enviar aceptas nuestra política de privacidad para gestionar tu reserva.
+                  </p>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
