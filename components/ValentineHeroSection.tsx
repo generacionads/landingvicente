@@ -1,7 +1,34 @@
-import React from 'react';
-import { Heart, Gift, ChevronRight, CalendarHeart } from 'lucide-react';
+'use client';
+
+import React, { useState, FormEvent } from 'react';
+import { Heart, Gift, ChevronRight, CalendarHeart, X, Send, CheckCircle2 } from 'lucide-react';
+import { ROOMS_DATA } from '../constants';
 
 const ValentineHeroSection: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setFormStatus('idle');
+    document.body.style.overflow = 'unset';
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    setFormStatus('submitting');
+    
+    // Simulate API call
+    setTimeout(() => {
+      setFormStatus('success');
+    }, 1500);
+  };
+
   return (
     <section className="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
       {/* Background Image with Romantic/Mystery Overlay */}
@@ -18,7 +45,7 @@ const ValentineHeroSection: React.FC = () => {
         {/* Subtle Texture */}
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')] opacity-30"></div>
         
-        {/* Floating Particles/Hearts Effect (CSS simulated with simple divs for performance) */}
+        {/* Floating Particles/Hearts Effect */}
         <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-rose-500 rounded-full blur-[2px] opacity-50 animate-pulse"></div>
         <div className="absolute bottom-1/3 right-1/4 w-3 h-3 bg-red-600 rounded-full blur-[3px] opacity-30 animate-pulse delay-700"></div>
       </div>
@@ -63,7 +90,10 @@ const ValentineHeroSection: React.FC = () => {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full">
-          <button className="w-full sm:w-auto group relative overflow-hidden bg-rose-700 hover:bg-rose-600 text-white px-8 py-4 rounded-sm font-bold tracking-widest text-sm md:text-base transition-all duration-300 shadow-[0_0_30px_rgba(190,18,60,0.4)]">
+          <button 
+            onClick={handleOpenModal}
+            className="w-full sm:w-auto group relative overflow-hidden bg-rose-700 hover:bg-rose-600 text-white px-8 py-4 rounded-sm font-bold tracking-widest text-sm md:text-base transition-all duration-300 shadow-[0_0_30px_rgba(190,18,60,0.4)]"
+          >
             <span className="relative z-10 flex items-center justify-center gap-2">
               <CalendarHeart size={20} />
               RESERVAR CITA
@@ -76,6 +106,154 @@ const ValentineHeroSection: React.FC = () => {
           </a>
         </div>
       </div>
+
+      {/* RESERVATION MODAL */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center px-4">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-slate-950/90 backdrop-blur-sm transition-opacity"
+            onClick={handleCloseModal}
+          ></div>
+
+          {/* Modal Content */}
+          <div className="relative w-full max-w-lg bg-slate-900 border border-rose-900/50 rounded-lg shadow-[0_0_50px_rgba(225,29,72,0.15)] overflow-hidden animate-fade-in-up">
+            
+            {/* Header */}
+            <div className="flex justify-between items-center p-6 border-b border-rose-900/30 bg-gradient-to-r from-slate-950 to-rose-950/30">
+              <div>
+                <span className="text-rose-500 text-xs font-bold uppercase tracking-wider block mb-1">San Valentín</span>
+                <h3 className="font-serif text-xl font-bold text-slate-100">Reserva tu Experiencia</h3>
+              </div>
+              <button 
+                onClick={handleCloseModal}
+                className="text-slate-400 hover:text-white transition-colors p-1"
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            {/* Form Body */}
+            <div className="p-6 md:p-8">
+              {formStatus === 'success' ? (
+                <div className="flex flex-col items-center justify-center py-10 text-center animate-fade-in">
+                  <div className="w-16 h-16 bg-rose-500/20 rounded-full flex items-center justify-center mb-4 text-rose-500">
+                    <CheckCircle2 size={32} />
+                  </div>
+                  <h4 className="text-xl font-bold text-slate-100 mb-2">¡Reserva Solicitada!</h4>
+                  <p className="text-slate-400 mb-6 max-w-xs">
+                    Hemos recibido tu solicitud. Te confirmaremos la disponibilidad en breves instantes vía email.
+                  </p>
+                  <button 
+                    onClick={handleCloseModal}
+                    className="bg-rose-900/50 hover:bg-rose-800 border border-rose-700/50 text-white px-6 py-2 rounded text-sm font-bold uppercase tracking-wider transition-colors"
+                  >
+                    Cerrar
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <label htmlFor="name" className="text-xs font-bold text-slate-400 uppercase tracking-wider">Nombre</label>
+                      <input 
+                        type="text" 
+                        id="name"
+                        required
+                        className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-rose-500 focus:ring-1 focus:ring-rose-500 outline-none transition-all placeholder:text-slate-700"
+                        placeholder="Tu nombre"
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <label htmlFor="phone" className="text-xs font-bold text-slate-400 uppercase tracking-wider">Teléfono</label>
+                      <input 
+                        type="tel" 
+                        id="phone"
+                        required
+                        className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-rose-500 focus:ring-1 focus:ring-rose-500 outline-none transition-all placeholder:text-slate-700"
+                        placeholder="+34 600..."
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1">
+                    <label htmlFor="email" className="text-xs font-bold text-slate-400 uppercase tracking-wider">Email</label>
+                    <input 
+                      type="email" 
+                      id="email"
+                      required
+                      className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-rose-500 focus:ring-1 focus:ring-rose-500 outline-none transition-all placeholder:text-slate-700"
+                      placeholder="ejemplo@correo.com"
+                    />
+                  </div>
+
+                  {/* Room Selection - Extra Field */}
+                  <div className="space-y-1">
+                    <label htmlFor="room" className="text-xs font-bold text-slate-400 uppercase tracking-wider">Sala de Preferencia</label>
+                    <div className="relative">
+                        <select 
+                        id="room"
+                        required
+                        className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-rose-500 focus:ring-1 focus:ring-rose-500 outline-none transition-all appearance-none cursor-pointer"
+                        >
+                        <option value="" disabled selected>Selecciona una aventura...</option>
+                        {ROOMS_DATA.map((room) => (
+                            <option key={room.id} value={room.id}>{room.title}</option>
+                        ))}
+                        </select>
+                        <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500">
+                            <ChevronRight size={14} className="rotate-90" />
+                        </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                     <div className="space-y-1">
+                      <label htmlFor="participants" className="text-xs font-bold text-slate-400 uppercase tracking-wider">Jugadores</label>
+                      <input 
+                        type="number" 
+                        id="participants"
+                        min="2"
+                        max="8"
+                        className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-rose-500 focus:ring-1 focus:ring-rose-500 outline-none transition-all placeholder:text-slate-700"
+                        placeholder="2"
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <label htmlFor="date" className="text-xs font-bold text-slate-400 uppercase tracking-wider">Fecha</label>
+                      <input 
+                        type="date" 
+                        id="date"
+                        required
+                        className="w-full bg-slate-950 border border-slate-700 rounded p-3 text-slate-200 text-sm focus:border-rose-500 focus:ring-1 focus:ring-rose-500 outline-none transition-all text-slate-400"
+                      />
+                    </div>
+                  </div>
+
+                  <button 
+                    type="submit"
+                    disabled={formStatus === 'submitting'}
+                    className="w-full bg-rose-700 hover:bg-rose-600 text-white font-bold py-3.5 rounded mt-4 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(190,18,60,0.3)]"
+                  >
+                    {formStatus === 'submitting' ? (
+                      <>Procesando...</>
+                    ) : (
+                      <>
+                        SOLICITAR RESERVA
+                        <Send size={18} />
+                      </>
+                    )}
+                  </button>
+                  
+                  <p className="text-[10px] text-slate-500 text-center mt-2">
+                    Te contactaremos para confirmar la hora exacta.
+                  </p>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
