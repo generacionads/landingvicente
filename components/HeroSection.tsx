@@ -1,5 +1,4 @@
 import React from 'react';
-import { ChevronRight } from 'lucide-react';
 
 const HeroSection: React.FC = () => {
   return (
@@ -31,19 +30,6 @@ const HeroSection: React.FC = () => {
           Adéntrate en un mundo de misterio, lujo y desafíos intelectuales. 
           Resuelve el enigma antes de que se agote el tiempo.
         </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button className="group relative overflow-hidden bg-amber-600 hover:bg-amber-500 text-slate-950 px-8 py-4 rounded-sm font-bold tracking-widest text-sm md:text-base transition-all duration-300 hover:scale-105 shadow-[0_0_30px_rgba(217,119,6,0.3)]">
-            <span className="relative z-10 flex items-center gap-2">
-              ELEGIR MI MISIÓN
-              <ChevronRight className="group-hover:translate-x-1 transition-transform" size={20} />
-            </span>
-          </button>
-          
-          <button className="px-8 py-4 rounded-sm font-bold tracking-widest text-sm md:text-base text-slate-300 hover:text-amber-500 border border-slate-700 hover:border-amber-500 transition-all duration-300">
-            VER TRAILER
-          </button>
-        </div>
       </div>
     </section>
   );
