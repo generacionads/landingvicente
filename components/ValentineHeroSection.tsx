@@ -70,10 +70,10 @@ const ValentineHeroSection: React.FC = () => {
             </span>
           </button>
           
-          <button className="w-full sm:w-auto px-8 py-4 rounded-sm font-bold tracking-widest text-sm md:text-base text-rose-200 hover:text-white border border-rose-900/50 hover:border-rose-500/50 hover:bg-rose-900/20 transition-all duration-300 flex items-center justify-center gap-2">
+          <a href="#salas" className="w-full sm:w-auto px-8 py-4 rounded-sm font-bold tracking-widest text-sm md:text-base text-rose-200 hover:text-white border border-rose-900/50 hover:border-rose-500/50 hover:bg-rose-900/20 transition-all duration-300 flex items-center justify-center gap-2">
             VER SALAS DISPONIBLES
             <ChevronRight size={18} />
-          </button>
+          </a>
         </div>
       </div>
     </section>
