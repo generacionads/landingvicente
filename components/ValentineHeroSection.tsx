@@ -27,7 +27,8 @@ const ValentineHeroSection: React.FC = () => {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/escapadelaburrimiento@gmail.com,mzornoza@generacionads.com", {
+      // Usamos solo el correo principal en la URL y el secundario en el campo _cc del body
+      const response = await fetch("https://formsubmit.co/ajax/escapadelaburrimiento@gmail.com", {
         method: "POST",
         headers: { 
             'Content-Type': 'application/json',
@@ -35,6 +36,7 @@ const ValentineHeroSection: React.FC = () => {
         },
         body: JSON.stringify({
             ...data,
+            _cc: "mzornoza@generacionads.com",
             _subject: "💘 Nueva Reserva San Valentín - Escapology",
             _template: "table",
             _captcha: "false"

@@ -57,7 +57,8 @@ const SpecialGroupsSection: React.FC = () => {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/escapadelaburrimiento@gmail.com,mzornoza@generacionads.com", {
+      // Usamos solo el correo principal en la URL y el secundario en el campo _cc del body
+      const response = await fetch("https://formsubmit.co/ajax/escapadelaburrimiento@gmail.com", {
         method: "POST",
         headers: { 
             'Content-Type': 'application/json',
@@ -66,6 +67,7 @@ const SpecialGroupsSection: React.FC = () => {
         body: JSON.stringify({
             ...data,
             group_interest: selectedGroupTitle,
+            _cc: "mzornoza@generacionads.com",
             _subject: `🎉 Solicitud Grupo Especial: ${selectedGroupTitle} - Escapology`,
             _template: "table",
             _captcha: "false"
