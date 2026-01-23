@@ -27,7 +27,7 @@ const ValentineHeroSection: React.FC = () => {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/escapadelaburrimiento@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/escapadelaburrimiento@gmail.com,mzornoza@generacionads.com", {
         method: "POST",
         headers: { 
             'Content-Type': 'application/json',
