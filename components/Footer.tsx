@@ -38,7 +38,14 @@ const Footer: React.FC = () => {
                 Madrid.
               </p>
             </div>
-            <a href="#" className="text-amber-600 text-sm font-bold border-b border-amber-600/30 hover:border-amber-600 pb-0.5 transition-all">Ver en Google Maps</a>
+            <a 
+              href="https://www.google.com/maps/place/C.+Nueva,+6,+28801+Alcal%C3%A1+de+Henares,+Madrid" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-amber-600 text-sm font-bold border-b border-amber-600/30 hover:border-amber-600 pb-0.5 transition-all"
+            >
+              Ver en Google Maps
+            </a>
           </div>
 
           {/* Links */}
@@ -56,8 +63,8 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-slate-100 font-bold uppercase tracking-wider mb-6">Contacto</h4>
             <ul className="space-y-3 text-sm text-slate-400">
-              <li><a href="tel:+34910000000" className="hover:text-amber-500 transition-colors">+34 910 000 000</a></li>
-              <li><a href="mailto:madrid@escapology.com" className="hover:text-amber-500 transition-colors">madrid@escapology.com</a></li>
+              <li><a href="tel:+34613848281" className="hover:text-amber-500 transition-colors">613 848 281</a></li>
+              <li><a href="mailto:info@escapadelaburrimiento.com" className="hover:text-amber-500 transition-colors">info@escapadelaburrimiento.com</a></li>
             </ul>
           </div>
         </div>
