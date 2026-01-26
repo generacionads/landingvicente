@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import WhatsAppButton from '../components/WhatsAppButton';
 import Script from 'next/script';
 import './globals.css';
 
@@ -48,6 +49,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <main className="flex-grow">
           {children}
         </main>
+        <WhatsAppButton />
         <Footer />
       </body>
     </html>
