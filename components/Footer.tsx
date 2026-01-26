@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
               ESCAPOLOGY
             </span>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
-              La experiencia de escape room premium líder en el mundo, ahora en el corazón de Madrid. ¿Tienes lo que se necesita para escapar?
+              La experiencia de escape room premium líder en el mundo, en Alcalá de Henares, localidad Patrimonio de la Humanidad, a veinte minutos de Madrid. ¿Tienes lo que se necesita para escapar?
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded bg-slate-900 flex items-center justify-center text-slate-400 hover:text-amber-500 hover:bg-slate-800 transition-all">
@@ -33,9 +33,9 @@ const Footer: React.FC = () => {
             <div className="flex items-start gap-3 text-slate-400 mb-4 group cursor-pointer hover:text-amber-500 transition-colors">
               <MapPin className="min-w-[20px] mt-1 group-hover:text-amber-500 text-slate-600" size={20} />
               <p className="text-sm">
-                C. de los Libreros, 15,<br />
-                28801 Alcalá de Henares,<br />
-                Madrid, España
+                Calle Nueva, 6.<br />
+                28801. Alcalá de Henares.<br />
+                Madrid.
               </p>
             </div>
             <a href="#" className="text-amber-600 text-sm font-bold border-b border-amber-600/30 hover:border-amber-600 pb-0.5 transition-all">Ver en Google Maps</a>

@@ -25,13 +25,13 @@ const HeroSection: React.FC = () => {
         </div>
         
         <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-slate-100 leading-tight mb-6 drop-shadow-2xl">
-          La Experiencia de Escape Room <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-600">Nº1 en Madrid</span>
+          La experiencia de Escape Room <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-600">que no te puedes perder en Madrid</span>
         </h1>
 
         <p className="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-          Adéntrate en un mundo de misterio, lujo y desafíos intelectuales. 
-          Resuelve el enigma antes de que se agote el tiempo.
+          Adéntrate en un mundo de misterio, tensión y emociones fuertes. 
+          Pon a prueba tus nervios y resuelve el enigma antes de que se agote el tiempo.
         </p>
       </div>
     </section>

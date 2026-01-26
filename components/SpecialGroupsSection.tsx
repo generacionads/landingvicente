@@ -15,7 +15,7 @@ const SpecialGroupsSection: React.FC = () => {
       icon: PartyPopper,
       description: "La celebración perfecta. Packs especiales para cumpleaños, comuniones y fiestas infantiles.",
       discount: "10% DTO",
-      features: ["Merienda incluida (opcional)", "Monitor dedicado", "Nivel adaptado"]
+      features: ["Merienda (opcional)", "Monitor dedicado", "Nivel adaptado"]
     },
     {
       id: 'family',
@@ -23,7 +23,7 @@ const SpecialGroupsSection: React.FC = () => {
       icon: Users,
       description: "La mejor actividad para unir generaciones. Equipos mixtos de adultos con menores.",
       discount: "10% DTO",
-      features: ["Pistas adaptadas", "Diversión sin pantallas", "Trabajo en equipo"]
+      features: ["Pistas adaptadas", "Diversión en vivo", "Trabajo en equipo"]
     },
     {
       id: 'corporate',
@@ -31,7 +31,7 @@ const SpecialGroupsSection: React.FC = () => {
       icon: Building2,
       description: "Soluciones a medida para colegios, empresas, asociaciones y grandes eventos.",
       discount: null, // No discount badge, specific CTA
-      features: ["Team Building", "Competición por equipos", "Catering disponible"]
+      features: ["Team Building", "Conexión y valores de equipo", "Catering disponible"]
     }
   ];
 
