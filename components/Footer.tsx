@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
               </p>
             </div>
             <a 
-              href="https://www.google.com/maps/place/C.+Nueva,+6,+28801+Alcal%C3%A1+de+Henares,+Madrid" 
+              href="https://www.google.com/maps/place/Escapology+Escape+Rooms+Madrid/@40.4821235,-3.3678247,17z/data=!4m15!1m8!3m7!1s0xd424912f2cc6e35:0x189cd548612adf03!2sC.+Nueva,+6,+28801+Alcal%C3%A1+de+Henares,+Madrid!3b1!8m2!3d40.4821235!4d-3.3678247!16s%2Fg%2F11c13hc08d!3m5!1s0xd4249e1599883bf:0x931bb5b71c9e9d6d!8m2!3d40.4821239!4d-3.3679966!16s%2Fg%2F11h_79slpd?entry=ttu&g_ep=EgoyMDI2MDEyMS4wIKXMDSoASAFQAw%3D%3D" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-amber-600 text-sm font-bold border-b border-amber-600/30 hover:border-amber-600 pb-0.5 transition-all"
