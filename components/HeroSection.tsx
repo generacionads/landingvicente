@@ -1,4 +1,5 @@
 import React from 'react';
+import { ChevronRight } from 'lucide-react';
 
 const HeroSection: React.FC = () => {
   return (
@@ -33,6 +34,16 @@ const HeroSection: React.FC = () => {
           Adéntrate en un mundo de misterio, tensión y emociones fuertes. 
           Pon a prueba tus nervios y resuelve el enigma antes de que se agote el tiempo.
         </p>
+
+        <div className="flex justify-center">
+          <a 
+            href="#salas" 
+            className="group inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-500 text-slate-950 px-8 py-4 rounded-sm font-bold tracking-widest text-sm md:text-base transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(245,158,11,0.4)]"
+          >
+            VER SALAS DISPONIBLES
+            <ChevronRight className="group-hover:translate-x-1 transition-transform" size={20} />
+          </a>
+        </div>
       </div>
     </section>
   );
