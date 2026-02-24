@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, Clock, ChevronRight } from 'lucide-react';
+import { Users, Clock, ChevronRight, Euro } from 'lucide-react';
 import { ROOMS_DATA } from '../constants';
 import Image from 'next/image';
 
@@ -42,7 +42,7 @@ const RoomsSection: React.FC = () => {
                   </h3>
                   
                   {/* Metadata */}
-                  <div className="flex items-center gap-6 mb-6 text-slate-400 text-sm">
+                  <div className="flex flex-wrap items-center gap-4 mb-6 text-slate-400 text-sm">
                     <div className="flex items-center gap-2">
                         <Users size={16} className="text-amber-600"/>
                         <span>{room.players}</span>
@@ -50,6 +50,10 @@ const RoomsSection: React.FC = () => {
                     <div className="flex items-center gap-2">
                         <Clock size={16} className="text-amber-600"/>
                         <span>{room.time}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <Euro size={16} className="text-amber-600"/>
+                        <span>desde 20€/persona</span>
                     </div>
                   </div>
 
