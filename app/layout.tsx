@@ -20,8 +20,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       </head>
       <body className="bg-slate-950 min-h-screen text-slate-200 font-sans selection:bg-amber-500/30 selection:text-amber-200 flex flex-col">
         {/* Meta Pixel Code */}
-        <Script id="meta-pixel" strategy="afterInteractive">
-          {`
+        <Script id="meta-pixel" strategy="afterInteractive" dangerouslySetInnerHTML={{
+          __html: `
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -32,8 +32,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '417143628940943'); 
             fbq('track', 'PageView');
-          `}
-        </Script>
+          `
+        }} />
         <noscript>
           <img 
             height="1" 
@@ -46,8 +46,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         {/* End Meta Pixel Code */}
 
         {/* Hotjar Tracking Code */}
-        <Script id="hotjar-tracking" strategy="afterInteractive">
-          {`
+        <Script id="hotjar-tracking" strategy="afterInteractive" dangerouslySetInnerHTML={{
+          __html: `
             (function(h,o,t,j,a,r){
                 h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
                 h._hjSettings={hjid:6632783,hjsv:6};
@@ -56,8 +56,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
                 a.appendChild(r);
             })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-          `}
-        </Script>
+          `
+        }} />
         {/* End Hotjar Tracking Code */}
 
         <Navbar />

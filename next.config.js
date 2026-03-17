@@ -1,11 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'export', // Generates a static HTML export (SSG)
-  distDir: 'dist',  // Outputs to 'dist' folder so Vercel finds it
+  output: 'standalone',
   images: {
-    unoptimized: true, // Required for static export
-    domains: ['images.unsplash.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.ibb.co',
+      }
+    ],
   },
 };
 
