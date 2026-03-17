@@ -76,6 +76,13 @@ const SpecialGroupsSection: React.FC = () => {
 
       if (response.ok) {
         setFormStatus('success');
+        // Trigger Meta Pixel Lead event
+        if (typeof window !== 'undefined' && (window as any).fbq) {
+          (window as any).fbq('track', 'Lead', {
+            content_name: selectedGroupTitle,
+            content_category: 'Planes Especiales'
+          });
+        }
       } else {
         setFormStatus('error');
       }
