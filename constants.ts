@@ -69,20 +69,20 @@ export const VALUE_PROPS: ValueProp[] = [
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: 1,
-    name: "Carlos M.",
-    role: "Entusiasta de Escape Rooms",
-    text: "He hecho más de 20 salas en Madrid y esta es, sin duda, la más inmersiva. El Orient Express es una obra de arte."
+    name: "N.B.",
+    role: "Aficionados a los Escape Rooms",
+    text: "Somos asiduos a este tipo de actividad con amigos, y este escape room en Alcalá de Henares está increíble. Perfectamente ambientado, muy emocionante y divertidísimo, salimos todos encantados. Nuestra game máster, majísima. ¡Volveremos sí o sí para disfrutar de todos los demás!"
   },
   {
     id: 2,
-    name: "Elena R.",
-    role: "Plan Familiar",
-    text: "Fuimos con los niños a la sala de Scooby-Doo y fue fantástico. El personal es encantador y la ambientación increíble."
+    name: "Carolina R.",
+    role: "Plan con Amigos",
+    text: "Nos encantó, estuvimos en la sala del submarino y estuvo complicada, no logramos salir, pero la pasamos genial. Los trabajadores súper amables y simpáticos. ¡Totalmente recomendable!"
   },
   {
     id: 3,
-    name: "Javier S.",
-    role: "Team Building",
-    text: "Organizamos un evento de empresa aquí. La sala Antidote nos obligó a colaborar como nunca. Muy recomendado."
+    name: "Sonia V.",
+    role: "Plan en Pareja",
+    text: "Una experiencia genial, nos costó empezar pero luego conseguimos salir. ¡La gente maravillosa! Sin duda repetiremos para hacer las salas que nos quedan."
   }
 ];
